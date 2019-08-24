@@ -11,13 +11,22 @@ function DropMenu(props) {
             <li 
             className="nav-item inner-menu-li"
             onClick={props.handleDropClick}
+            // onClick={
+            //   () => {
+            //     if(menu[0].split(" ").includes("User")){
+            //       if(menu[0].split(" ")[0] === "add"){
+            //         props.handleDropClick("add")
+            //       }
+            //     }
+            //   }
+            // }
             >
-              <a className="nav-link" href="http://fakelink">
+              <div className="nav-link">
                 <span className="feather">
                   {menu[1]}
                 </span>
                  {menu[0]}
-              </a>
+              </div>
             </li>
           );
         })}

@@ -3,7 +3,7 @@ import { Home, HardDrive, Users, BarChart2, UserPlus, UserMinus } from "react-fe
 
 import DropMenu from "./dropMenu";
 
-function SideNav() {
+function SideNav(props) {
   const [dropUserMenu, setDropUserMenu] = useState(false);
   const [dropDeviceMenu, setDropDeviceMenu] = useState(false);
   const [dropReportMenu, setDropReportMenu] = useState(false);
@@ -12,13 +12,16 @@ function SideNav() {
     <nav className="col-md-2 d-none d-md-block bg-light sidebar">
       <div className="sidebar-sticky">
         <ul className="nav flex-column">
-          <li className="nav-item">
-            <a className="nav-link" href="http://fakelink">
+          <li 
+            className="nav-item"
+            onClick={() => props.displayComponent("")}
+          >
+            <div className="nav-link">
               <span className="feather">
                 <Home size={20} />
               </span>
               Dashboard
-            </a>
+            </div>
           </li>
           <li
             className="nav-item drop-menu"
@@ -33,7 +36,14 @@ function SideNav() {
               Users
             </div>
           </li>
-          {dropUserMenu && <DropMenu menuArray={[["Add User", <UserPlus size={15} />], ["Remove User", <UserMinus size={15} />]]} />}
+          {
+            dropUserMenu && 
+            <DropMenu 
+              menuArray={[["Add User", <UserPlus size={15} />], ["Remove User", <UserMinus size={15} />]]} 
+              handleDropClick={() => props.displayComponent("add")}
+            />
+          
+          }
           <li
             className="nav-item drop-menu"
             onClick={() => {
