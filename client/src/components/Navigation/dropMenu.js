@@ -1,6 +1,4 @@
 import React from "react";
-import { UserPlus, UserMinus } from "react-feather";
-
 
 function DropMenu(props) {
   return (
@@ -10,16 +8,14 @@ function DropMenu(props) {
           return (
             <li 
             className="nav-item inner-menu-li"
-            onClick={props.handleDropClick}
-            // onClick={
-            //   () => {
-            //     if(menu[0].split(" ").includes("User")){
-            //       if(menu[0].split(" ")[0] === "add"){
-            //         props.handleDropClick("add")
-            //       }
-            //     }
-            //   }
-            // }
+            // onClick={props.handleDropClick}
+            onClick={
+              () => {
+                if(menu[0].split(" ").includes("User")){
+                  props.handleDropClick(menu[0].split(" ")[0])
+                }
+              }
+            }
             >
               <div className="nav-link">
                 <span className="feather">

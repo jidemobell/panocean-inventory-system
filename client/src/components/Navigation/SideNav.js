@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Home, HardDrive, Users, BarChart2, UserPlus, UserMinus } from "react-feather";
+import {
+  Home,
+  HardDrive,
+  Users,
+  BarChart2,
+  UserPlus,
+  UserMinus
+} from "react-feather";
 
 import DropMenu from "./dropMenu";
 
@@ -12,10 +19,7 @@ function SideNav(props) {
     <nav className="col-md-2 d-none d-md-block bg-light sidebar">
       <div className="sidebar-sticky">
         <ul className="nav flex-column">
-          <li 
-            className="nav-item"
-            onClick={() => props.displayComponent("")}
-          >
+          <li className="nav-item" onClick={() => props.displayComponent("")}>
             <div className="nav-link">
               <span className="feather">
                 <Home size={20} />
@@ -36,14 +40,15 @@ function SideNav(props) {
               Users
             </div>
           </li>
-          {
-            dropUserMenu && 
-            <DropMenu 
-              menuArray={[["Add User", <UserPlus size={15} />], ["Remove User", <UserMinus size={15} />]]} 
-              handleDropClick={() => props.displayComponent("add")}
+          {dropUserMenu && (
+            <DropMenu
+              menuArray={[
+                ["Add User", <UserPlus size={15} />],
+                ["Remove User", <UserMinus size={15} />]
+              ]}
+              handleDropClick={val => props.displayComponent(val)}
             />
-          
-          }
+          )}
           <li
             className="nav-item drop-menu"
             onClick={() => {
@@ -65,17 +70,14 @@ function SideNav(props) {
             />
           )}
           <li
-          className="nav-item drop-menu"
-            onClick={() => {
+            className="nav-item drop-menu"
+            onClick={() =>
               !dropReportMenu
                 ? setDropReportMenu(true)
-                : setDropReportMenu(false);
-            }}
+                : setDropReportMenu(false)
+            }
           >
-            <div
-              className="nav-link"
-              
-            >
+            <div className="nav-link">
               <span className="feather">
                 <BarChart2 />
               </span>
