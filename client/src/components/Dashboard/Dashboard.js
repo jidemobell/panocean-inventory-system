@@ -85,6 +85,7 @@ function Dashboard() {
               </div>
             </div>
             {state.mainComponent}
+            <hr style={{ marginInline: '20px' }} />
             <h2>Recently Assigned</h2>
             <DeviceTable />
           </main>

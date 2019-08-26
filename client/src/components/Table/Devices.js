@@ -3,7 +3,7 @@ import React from 'react';
 function DeviceTable(){
     return (
         <div className="table-responsive">
-        <table className="table table-striped table-sm">
+        <table className="table table-striped ">
           <thead>
             <tr>
               <th>#</th>
