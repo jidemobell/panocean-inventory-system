@@ -5,6 +5,7 @@ import DeviceTable from "../Table/Devices";
 import SideNav from "../Navigation/SideNav";
 import Header from "../Navigation/Header";
 import UserForm from "../Forms/UserForm";
+import AddUserForm from '../Forms/AddDeviceForm';
 
 import "./Dashboard.css";
 
@@ -29,6 +30,11 @@ function displayComponent(data) {
         type: "SHOW_CHART",
         payload: <DataChart />
       };
+    case "Add Device":
+        return {
+          type: "ADD_DEVICE",
+          payload: <AddUserForm />
+        };
     default:
       break;
   }
@@ -41,6 +47,8 @@ function reducer(state, action) {
       return { mainTitle: "Add User", mainComponent: action.payload };
     case "SHOW_CHART":
       return { mainTitle: "Dashboard", mainComponent: action.payload };
+    case "ADD_DEVICE":
+        return { mainTitle: "Add Device", mainComponent: action.payload };
 
     default:
       return state;

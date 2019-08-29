@@ -67,6 +67,7 @@ function SideNav(props) {
           {dropDeviceMenu && (
             <DropMenu
               menuArray={[["Add Device"], ["Remove Device"], ["Show Device"]]}
+              handleDropClick={val => props.displayComponent(val)}
             />
           )}
           <li

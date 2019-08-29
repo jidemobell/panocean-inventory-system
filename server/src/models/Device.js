@@ -12,7 +12,8 @@ const DeviceSchema = new mongoose.Schema(
       type: String,
       enum: ["user-device", "active-device"]
     },
-    location: { type: String }
+    location: { type: String },
+    
   },
   { timestamps: true }
 );
