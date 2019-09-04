@@ -14,6 +14,10 @@ function DropMenu(props) {
                 if(menu[0].split(" ").includes("User")){
                   props.handleDropClick(menu[0].split(" ")[0])
                 }
+                if(menu[0].split(" ").includes("Device")){
+                  console.log(menu[0])
+                  props.handleDropClick(menu[0])
+                }
               }
             }
             >
