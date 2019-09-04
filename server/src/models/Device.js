@@ -6,7 +6,7 @@ const DeviceSchema = new mongoose.Schema(
     serialNo: { type: Number },
     type: {
       type: String,
-      enum: ["monitor", "printer", "cpu", "laptop", "mouse"]
+      enum: ["monitor", "printer", "cpu", "laptop", "mouse", "router", "switch", "phone", "dockingStation"]
     },
     category: {
       type: String,

@@ -9,17 +9,16 @@ router.get("/", (req, res) => {
 
 //route to create a user
 router.post("/user/create", (req, res) => {
-  let newUser = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    type: req.body.type
-  });
-
-  newUser
-    .save()
+  new User({
+    firstName: req.body.data.firstName,
+    lastName: req.body.data.lastName,
+    type: (req.body.data.type).toLowerCase(),
+    location: req.body.data.location,
+    id: req.body.data.id,
+    floor: req.body.data.floor
+  }).save()
     .then(doc => {
       if (res.status(200)) {
-        console.log("successfully added user")
         res.json(doc);
       }
     })
