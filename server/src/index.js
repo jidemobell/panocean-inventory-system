@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require('cors')
 
 const router = require("../routes/index")
 
@@ -19,6 +20,7 @@ mongoose
 //app body parser
 app.use(express.json())
 
+app.use(cors())
 //use routes
 app.use('/', router)
 

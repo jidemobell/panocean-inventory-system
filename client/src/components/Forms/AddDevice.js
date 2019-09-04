@@ -1,83 +1,31 @@
-import React, {  useReducer } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
-let initState = {
+const initInpuState = {
   firstName: '',
-  lastName: '',
-  id: ''
-};
-
-async function userActions(data) {
-  try {
-    const response = await axios.post("http://localhost:4000/user/create", {
-      data
-    });
-    if (response.data.success === false) {
-      return {
-        type: "FORM_ERROR",
-        payload: response.data.error
-      };
-    } else {
-      return {
-        type: "ADD_USER",
-        payload: true
-      };
-    }
-  } catch (error) {
-    return {
-      type: "FORM_ERROR",
-      payload: error
-    };
-  }
+  lastName: ''
 }
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "ADD_USER":
-      return { success: action.payload };
-    case "REMOVE_USER":
-      return { success: action.payload };
-
-    default:
-      return state;
-  }
-}
-
-const floorArray = Array.from(Array(15).keys()).slice(1)
-
+// const floorArray = Array.from(Array(15).keys()).slice(1)
+const floorArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 
 function UserForm() {
-  const [state, dispatch] = useReducer(reducer, initState);
-
+  const [ inputState, setInputState ] = useState(initInpuState)
   return (
     <div className="container add-user-form">
       <div className="row">
         <div className="col-md-8 order-md-1">
-          <h4 className="mb-3">Add a new user | Assign to Device </h4>
+          <h4 className="mb-3">Add a new Device | Assign to User </h4>
           <hr className="mb-4" />
-          <form
-            className="needs-validation"
-            novalidate
-            onSubmit={e => {
-              e.preventDefault();
-              const elementsArray = e.target.elements !== undefined && e.target.elements;
-              let userData = {};
-              [...elementsArray].map(element => {
-                userData[element.id] = element.value
-              });
-              dispatch(userActions(userData))
-              e.target.reset()
-            }}
-          >
+          <form className="needs-validation" novalidate>
             <div className="row">
               <div className="col-md-6 mb-3">
-                <label for="firstName">First name</label>
+                <label for="firstName">Description</label>
                 <input
                   type="text"
                   className="form-control"
                   id="firstName"
                   placeholder=""
-                  defaultValue={state.firstName}
+                  defaultValue={inputState.firstName}
                   required
                 />
                 <div className="invalid-feedback">
@@ -91,7 +39,7 @@ function UserForm() {
                   className="form-control"
                   id="lastName"
                   placeholder=""
-                  defaultValue={state.lastName}
+                  defaultValue={inputState.lastName}
                   required
                 />
                 <div className="invalid-feedback">
@@ -103,7 +51,7 @@ function UserForm() {
               <label for="state">Type</label>
               <select
                 className="custom-select d-block w-100"
-                id="type"
+                id="state"
                 required
               >
                 <option value="">Choose...</option>
@@ -141,13 +89,17 @@ function UserForm() {
                 <label for="state">Floor</label>
                 <select
                   className="custom-select d-block w-100"
-                  id="floor"
+                  id="state"
                   required
                 >
                   <option value="">Choose...</option>
-                  {floorArray.map((val, i) => {
-                    return <option value={String(i + 1)} key={`select-${i}`}>{val}</option>;
-                  })}
+                  {
+                    floorArray.map((val, i) => {
+                       return (
+                         <option value={String(i+1)}>{val}</option>
+                       )
+                    })
+                  }
                 </select>
                 <div className="invalid-feedback">
                   Please provide a valid Floor.
@@ -160,7 +112,7 @@ function UserForm() {
                   className="form-control"
                   id="staff-number"
                   placeholder="STAFF-ID"
-                  defaultValue={state.id}
+                  value={initInpuState.id}
                   required
                 />
                 <div className="invalid-feedback">ID required.</div>

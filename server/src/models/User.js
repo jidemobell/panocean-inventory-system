@@ -3,8 +3,9 @@ const mongoose = require('mongoose')
 const UserSchema = new mongoose.Schema({
    firstName: { type: String },
    lastName: { type: String },
-   staffId: { type: Number },
-   department: { type: String },
+   id: { type: Number },
+   location: { type: String },
+   floor: { type: String },
    type: {
        type: String,
        enum: ['intern', 'staff', 'visitor'],
