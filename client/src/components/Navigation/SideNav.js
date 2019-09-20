@@ -44,7 +44,7 @@ function SideNav(props) {
             <DropMenu
               menuArray={[
                 ["Add User", <UserPlus size={15} />],
-                ["Remove User", <UserMinus size={15} />]
+                // ["Remove User", <UserMinus size={15} />]
               ]}
               handleDropClick={val => props.displayComponent(val)}
             />
@@ -66,7 +66,7 @@ function SideNav(props) {
           </li>
           {dropDeviceMenu && (
             <DropMenu
-              menuArray={[["Add Device"], ["Remove Device"], ["Show Device"]]}
+              menuArray={[["Add Device"], ["Show Device"]]}
               handleDropClick={val => props.displayComponent(val)}
             />
           )}

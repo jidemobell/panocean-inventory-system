@@ -5,14 +5,15 @@ import DeviceTable from "../Table/Devices";
 import SideNav from "../Navigation/SideNav";
 import Header from "../Navigation/Header";
 import UserForm from "../Forms/UserForm";
-import AddUserForm from '../Forms/AddDeviceForm';
+import AddUserForm from "../Forms/AddDeviceForm";
+import ShowDeviceForm from '../Forms/showDeviceForm'
 
 import "./Dashboard.css";
 
 const initialState = { mainTitle: "DashBoard", mainComponent: <DataChart /> };
 
 /**
- * action to be dispatched at click of 
+ * action to be dispatched at click of
  * sidenav dropdown items
  * payload is a component to be displayed
  * onClick of this dropdown item
@@ -31,10 +32,15 @@ function displayComponent(data) {
         payload: <DataChart />
       };
     case "Add Device":
-        return {
-          type: "ADD_DEVICE",
-          payload: <AddUserForm />
-        };
+      return {
+        type: "ADD_DEVICE",
+        payload: <AddUserForm />
+      };
+    case "Show Device":
+      return {
+        type: "SHOW_DEVICE",
+        payload: <ShowDeviceForm />
+      };
     default:
       break;
   }
@@ -48,14 +54,14 @@ function reducer(state, action) {
     case "SHOW_CHART":
       return { mainTitle: "Dashboard", mainComponent: action.payload };
     case "ADD_DEVICE":
-        return { mainTitle: "Add Device", mainComponent: action.payload };
+      return { mainTitle: "Add Device", mainComponent: action.payload };
+    case "SHOW_DEVICE":
+      return { mainTitle: "Show Device", mainComponent: action.payload };
 
     default:
       return state;
   }
 }
-
-
 
 function Dashboard() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -64,7 +70,9 @@ function Dashboard() {
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <SideNav displayComponent={data => dispatch(displayComponent(data))} />
+          <SideNav
+            displayComponent={data => dispatch(displayComponent(data))}
+          />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 className="h2">{state.mainTitle}</h1>
@@ -93,7 +101,7 @@ function Dashboard() {
               </div>
             </div>
             {state.mainComponent}
-            <hr style={{ marginInline: '20px' }} />
+            <hr style={{ marginInline: "20px" }} />
             <h2>Recently Assigned</h2>
             <DeviceTable />
           </main>

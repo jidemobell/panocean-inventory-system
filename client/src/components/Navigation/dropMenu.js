@@ -1,10 +1,10 @@
 import React from "react";
 
-function DropMenu(props) {
+function DropMenu({handleDropClick, menuArray}) {
   return (
     <div className="users-menu">
       <ul className="nav flex-column">
-        {props.menuArray.map(menu => {
+        {menuArray.map(menu => {
           return (
             <li 
             className="nav-item inner-menu-li"
@@ -12,11 +12,15 @@ function DropMenu(props) {
             onClick={
               () => {
                 if(menu[0].split(" ").includes("User")){
-                  props.handleDropClick(menu[0].split(" ")[0])
+                  handleDropClick(menu[0].split(" ")[0])
                 }
                 if(menu[0].split(" ").includes("Device")){
                   console.log(menu[0])
-                  props.handleDropClick(menu[0])
+                  handleDropClick(menu[0])
+								}
+								if(menu[0].split(" ").includes("show")){
+                  console.log(menu[0])
+                  handleDropClick(menu[0])
                 }
               }
             }

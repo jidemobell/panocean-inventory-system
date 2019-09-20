@@ -1,0 +1,16 @@
+.search-wrapper{
+	border: rgba(249, 249, 249, 0.479) solid 1px;
+	border-radius: 20px;
+	position: relative;
+	background: rgba(255, 255, 255, 0.76);
+	padding: 5px;
+ 
+}
+
+.searchbox{
+	/* border-radius: 50px; */
+	/* font-size: 4px; */
+	background-color: unset;
+	outline-style: none;
+	border: unset;
+}
